@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- The COPYRIGHT file at the top level of this repository contains the full
+     copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/field[@name='document']" position="after">
+        <newline/>
+        <label name="trigger_model"/>
+        <field name="trigger_model"/>
+        <label name="trigger_generation_model"/>
+        <field name="trigger_generation_model"/>
+    </xpath>
+</data>
