@@ -103,7 +103,7 @@ class Template:
         IrModel = Pool().get('ir.model')
 
         if not self.trigger_model:
-            return []
+            return [(None, '')]
         models = self._get_trigger_generation_models_by_trigger_models().get(
             self.trigger_model)
         models = IrModel.search([
