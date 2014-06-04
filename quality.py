@@ -72,10 +72,11 @@ class Template:
         'done. It will generate a test for each instance of Generation '
         'Model in the trigger instance.')
     trigger_generation_model = fields.Selection(
-        'get_trigger_generation_models', 'Trigger Generation Model', states={
+        'get_trigger_generation_models', 'Trigger Generation Model',
+        states={
             'invisible': Not(Bool(Eval('trigger_model'))),
             'required': Bool(Eval('trigger_model')),
-            }, selection_change_with=['trigger_model'],
+            },
         depends=['trigger_model'])
 
     @staticmethod
@@ -99,6 +100,7 @@ class Template:
                 ])
         return [(None, '')] + [(m.model, m.name) for m in models]
 
+    @fields.depends('trigger_models')
     def get_trigger_generation_models(self):
         IrModel = Pool().get('ir.model')
 
