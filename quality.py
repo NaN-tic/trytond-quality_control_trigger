@@ -100,7 +100,7 @@ class Template:
                 ])
         return [(None, '')] + [(m.model, m.name) for m in models]
 
-    @fields.depends('trigger_models')
+    @fields.depends('trigger_model')
     def get_trigger_generation_models(self):
         IrModel = Pool().get('ir.model')
 
