@@ -1,0 +1,21 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:quality.template,trigger_generation_model:"
+msgid "Trigger Generation Model"
+msgstr "Modelo generación disparador"
+
+msgctxt "field:quality.template,trigger_model:"
+msgid "Trigger Model"
+msgstr "Modelo disparador"
+
+msgctxt "help:quality.template,trigger_model:"
+msgid ""
+"If you fill in this field, the system will generate a Test based on this "
+"Template when an instance of the selected model was done. It will generate a"
+" test for each instance of Generation Model in the trigger instance."
+msgstr ""
+"Si rellena este campo el sistema preparará un test basado en esta plantilla "
+"cuando se realice una instancia del modelo seleccionado. Se preparará un "
+"test por cada instancia del Modelo generación disparador."
