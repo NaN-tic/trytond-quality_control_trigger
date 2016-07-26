@@ -45,7 +45,7 @@ class QualityControlTriggerMixin:
                     if self.effective_date else today)
                 test_vals.append({
                         'test_date': test_date,
-                        'template': template.id,
+                        'templates': [('add', [template.id])],
                         'document': '%s,%d' % (generation_instance.__name__,
                             generation_instance.id)
                         })
@@ -54,7 +54,7 @@ class QualityControlTriggerMixin:
 
         for test in new_tests:
             with Transaction().set_user(0, set_context=True):
-                test.set_template_vals()
+                test.apply_template_values()
                 test.save()
 
         return new_tests
