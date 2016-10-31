@@ -37,20 +37,19 @@ class QualityControlTriggerMixin:
             if not generation_instances:
                 continue
 
-            test_vals = []
+            to_create = []
             today = datetime.today()
             for generation_instance in generation_instances:
                 test_date = (datetime.combine(self.effective_date,
                         datetime.now().time())
                     if self.effective_date else today)
-                test_vals.append({
-                        'test_date': test_date,
-                        'templates': [('add', [template.id])],
-                        'document': '%s,%d' % (generation_instance.__name__,
-                            generation_instance.id)
-                        })
+                to_create.append(QualityTest(
+                    test_date=test_date,
+                    templates=[template],
+                    document=generation_instance))
             with Transaction().set_user(0, set_context=True):
-                new_tests += QualityTest.create(test_vals)
+                new_tests += QualityTest.create([x._save_values for x in
+                        to_create])
 
         for test in new_tests:
             with Transaction().set_user(0, set_context=True):
