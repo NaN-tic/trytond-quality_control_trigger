@@ -8,7 +8,6 @@ from trytond.pyson import Bool, Eval, Not
 from trytond.transaction import Transaction
 
 __all__ = ['QualityControlTriggerMixin', 'Template']
-__metaclass__ = PoolMeta
 
 
 class QualityControlTriggerMixin:
@@ -63,6 +62,7 @@ class QualityControlTriggerMixin:
 
 
 class Template:
+    __metaclass__ = PoolMeta
     __name__ = 'quality.template'
 
     trigger_model = fields.Selection('get_trigger_models', 'Trigger Model',
