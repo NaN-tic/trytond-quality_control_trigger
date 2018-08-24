@@ -61,8 +61,7 @@ class QualityControlTriggerMixin:
         raise NotImplementedError
 
 
-class Template:
-    __metaclass__ = PoolMeta
+class Template(metaclass=PoolMeta):
     __name__ = 'quality.template'
 
     trigger_model = fields.Selection('get_trigger_models', 'Trigger Model',
@@ -93,7 +92,8 @@ class Template:
     @classmethod
     def get_trigger_models(cls):
         IrModel = Pool().get('ir.model')
-        models = cls._get_trigger_generation_models_by_trigger_models().keys()
+        models = list(
+            cls._get_trigger_generation_models_by_trigger_models().keys())
         models = IrModel.search([
                 ('model', 'in', models),
                 ])
