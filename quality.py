@@ -10,7 +10,7 @@ from trytond.transaction import Transaction
 __all__ = ['QualityControlTriggerMixin', 'Template']
 
 
-class QualityControlTriggerMixin:
+class QualityControlTriggerMixin(object):
 
     @classmethod
     def create_quality_tests(cls, records, trigger_generation_model):
